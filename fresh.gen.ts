@@ -8,6 +8,7 @@ import * as $2 from "./routes/_middleware.ts";
 import * as $3 from "./routes/catalog/movie/movieCatalog.json.ts";
 import * as $4 from "./routes/index.tsx";
 import * as $5 from "./routes/manifest.json.ts";
+import * as $6 from "./routes/stream/movie/[id].ts";
 import * as $$0 from "./islands/Counter.tsx";
 
 const manifest = {
@@ -18,6 +19,7 @@ const manifest = {
     "./routes/catalog/movie/movieCatalog.json.ts": $3,
     "./routes/index.tsx": $4,
     "./routes/manifest.json.ts": $5,
+    "./routes/stream/movie/[id].ts": $6,
   },
   islands: {
     "./islands/Counter.tsx": $$0,
