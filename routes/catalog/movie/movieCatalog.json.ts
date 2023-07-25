@@ -20,6 +20,13 @@ export const handler: Handlers = {
           "poster": "https://images.metahub.space/poster/medium/tt0017136/img",
           "genres": ["Drama", "Sci-Fi"],
         },
+        {
+          "type": "movie",
+          "id": "tt1254207",
+          "name": "Big Buck Bunny",
+          "genres": ["Animation", "Short", "Comedy"],
+          "poster": "https://images.metahub.space/poster/medium/tt1254207/img",
+        },
       ],
     };
 

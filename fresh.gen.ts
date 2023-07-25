@@ -6,10 +6,12 @@ import * as $0 from "./routes/_404.tsx";
 import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/_middleware.ts";
 import * as $3 from "./routes/catalog/movie/movieCatalog.json.ts";
-import * as $4 from "./routes/index.tsx";
-import * as $5 from "./routes/manifest.json.ts";
-import * as $6 from "./routes/stream/movie/[id].ts";
-import * as $$0 from "./islands/Counter.tsx";
+import * as $4 from "./routes/catalog/series/seriesCatalog.json.ts";
+import * as $5 from "./routes/index.tsx";
+import * as $6 from "./routes/manifest.json.ts";
+import * as $7 from "./routes/stream/movie/[id].ts";
+import * as $$0 from "./islands/Catalog.tsx";
+import * as $$1 from "./islands/Catalogs.tsx";
 
 const manifest = {
   routes: {
@@ -17,12 +19,14 @@ const manifest = {
     "./routes/_app.tsx": $1,
     "./routes/_middleware.ts": $2,
     "./routes/catalog/movie/movieCatalog.json.ts": $3,
-    "./routes/index.tsx": $4,
-    "./routes/manifest.json.ts": $5,
-    "./routes/stream/movie/[id].ts": $6,
+    "./routes/catalog/series/seriesCatalog.json.ts": $4,
+    "./routes/index.tsx": $5,
+    "./routes/manifest.json.ts": $6,
+    "./routes/stream/movie/[id].ts": $7,
   },
   islands: {
-    "./islands/Counter.tsx": $$0,
+    "./islands/Catalog.tsx": $$0,
+    "./islands/Catalogs.tsx": $$1,
   },
   baseUrl: import.meta.url,
 };
