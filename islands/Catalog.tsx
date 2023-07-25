@@ -2,7 +2,7 @@ import { useEffect } from "preact/hooks";
 import { useSignal } from "@preact/signals";
 import { Card } from "../components/Card.tsx";
 
-interface CatalogProps {
+interface Catalog {
   id: string;
   name: string;
   type: string;
@@ -15,17 +15,20 @@ interface Meta {
   poster: string;
 }
 
+interface CatalogProps extends Catalog {
+  url: string;
+}
+
 export default function Catalog(props: CatalogProps) {
   const catalog = useSignal(props);
 
   useEffect(async () => {
-    const { id, type, name } = props;
-    const { metas } = await fetch(`/catalog/${type}/${id}.json`).then((r) =>
-      r.json()
-    );
+    const { id, type, name, url = `/catalog/${type}/${id}.json` } = props;
+    const { metas } = await fetch(url).then((r) => r.json());
     catalog.value = {
       ...catalog.value,
-      metas,
+      // Limits the number of metas based on original metas length.
+      metas: metas.filter((meta, index) => index < props.metas.length),
     };
 
     return () => {
