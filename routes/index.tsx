@@ -8,8 +8,7 @@ export default function Home(request: Request, ctx: RouteContext) {
         <title>Board</title>
       </Head>
 
-      <Catalogs manifest="https://v3-cinemeta.strem.io/manifest.json">
-      </Catalogs>
+      <Catalogs manifest="https://v3-cinemeta.strem.io/manifest.json" />
 
       <Catalogs manifest="/manifest.json"></Catalogs>
     </>

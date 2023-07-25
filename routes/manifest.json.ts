@@ -18,7 +18,7 @@ export const handler: Handlers = {
 
     // Populates the manifest.
     Object.keys(routes).forEach((route) => {
-      const [, , resource, type, filename] = route.split("/");
+      const [, , resource, type, filename, extra] = route.split("/");
       if (RESOURCES.includes(resource)) {
         if (!resources.includes(resource)) {
           resources.push(resource);
@@ -33,6 +33,28 @@ export const handler: Handlers = {
 
         if (resource === "catalog") {
           const id = filename.substring(0, filename.indexOf(".json"));
+          if (extra) {
+            let catalog = catalogs.find((catalog) => catalog.id === filename);
+            if (!catalog) { // No actual catalog available.
+              catalog = {
+                id: filename,
+                type,
+              };
+              catalogs.push(catalog);
+            }
+
+            const extras = catalog.extra || [];
+
+            extras.push({
+              name: extra.split("=", 1)[0],
+              isRequired: false,
+            });
+
+            catalog.extra = extras;
+
+            return;
+          }
+
           catalogs.push({
             id,
             type,
