@@ -5,14 +5,15 @@
 import * as $0 from "./routes/_404.tsx";
 import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/_middleware.ts";
-import * as $3 from "./routes/catalog/movie/movieCatalog.json.ts";
-import * as $4 from "./routes/catalog/movie/movieCatalog/genre=[q].json.ts";
-import * as $5 from "./routes/catalog/movie/movieCatalog/search=[q].json.ts";
-import * as $6 from "./routes/catalog/movie/movieCatalog/skip=[n].json.ts";
-import * as $7 from "./routes/catalog/series/seriesCatalog.json.ts";
-import * as $8 from "./routes/index.tsx";
-import * as $9 from "./routes/manifest.json.ts";
-import * as $10 from "./routes/stream/movie/[id].ts";
+import * as $3 from "./routes/catalog/[type]/[id].tsx";
+import * as $4 from "./routes/catalog/movie/movieCatalog.json.ts";
+import * as $5 from "./routes/catalog/movie/movieCatalog/genre=[q].json.ts";
+import * as $6 from "./routes/catalog/movie/movieCatalog/search=[q].json.ts";
+import * as $7 from "./routes/catalog/movie/movieCatalog/skip=[n].json.ts";
+import * as $8 from "./routes/catalog/series/seriesCatalog.json.ts";
+import * as $9 from "./routes/index.tsx";
+import * as $10 from "./routes/manifest.json.ts";
+import * as $11 from "./routes/stream/movie/[id].ts";
 import * as $$0 from "./islands/Catalog.tsx";
 import * as $$1 from "./islands/Catalogs.tsx";
 
@@ -21,14 +22,15 @@ const manifest = {
     "./routes/_404.tsx": $0,
     "./routes/_app.tsx": $1,
     "./routes/_middleware.ts": $2,
-    "./routes/catalog/movie/movieCatalog.json.ts": $3,
-    "./routes/catalog/movie/movieCatalog/genre=[q].json.ts": $4,
-    "./routes/catalog/movie/movieCatalog/search=[q].json.ts": $5,
-    "./routes/catalog/movie/movieCatalog/skip=[n].json.ts": $6,
-    "./routes/catalog/series/seriesCatalog.json.ts": $7,
-    "./routes/index.tsx": $8,
-    "./routes/manifest.json.ts": $9,
-    "./routes/stream/movie/[id].ts": $10,
+    "./routes/catalog/[type]/[id].tsx": $3,
+    "./routes/catalog/movie/movieCatalog.json.ts": $4,
+    "./routes/catalog/movie/movieCatalog/genre=[q].json.ts": $5,
+    "./routes/catalog/movie/movieCatalog/search=[q].json.ts": $6,
+    "./routes/catalog/movie/movieCatalog/skip=[n].json.ts": $7,
+    "./routes/catalog/series/seriesCatalog.json.ts": $8,
+    "./routes/index.tsx": $9,
+    "./routes/manifest.json.ts": $10,
+    "./routes/stream/movie/[id].ts": $11,
   },
   islands: {
     "./islands/Catalog.tsx": $$0,
