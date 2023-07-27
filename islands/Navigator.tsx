@@ -1,6 +1,6 @@
 import { computed, Signal, signal } from "@preact/signals";
 
-import { Catalog } from "../lib/manifest.ts";
+import { Catalog } from "$lib/manifest.ts";
 
 interface NavigatorProps {
   catalogs: Signal<Catalog[]>;

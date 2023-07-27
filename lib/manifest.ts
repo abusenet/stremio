@@ -26,6 +26,11 @@ export interface Meta {
   id: string;
   name: string;
   poster: string;
+  description?: string;
+  logo?: string;
+  runtime?: string;
+  year?: number;
+  genre?: string[];
 }
 
 export interface Manifest {

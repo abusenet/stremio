@@ -1,5 +1,5 @@
 import { Head } from "$fresh/runtime.ts";
-import Catalogs from "../islands/Catalogs.tsx";
+import Catalogs from "$islands/Catalogs.tsx";
 
 export default function Home(request: Request, ctx: RouteContext) {
   return (

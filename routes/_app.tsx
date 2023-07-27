@@ -53,7 +53,7 @@ export default function App({ Component }: AppProps) {
         </nav>
       </header>
 
-      <main class="overflow-auto bg-[#161523] min-h-[calc(100vh-56px)]">
+      <main class="relative flex flex-wrap overflow-auto text-white bg-[#161523] h-[calc(100vh-56px)]">
         <Component />
       </main>
 

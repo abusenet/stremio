@@ -1,9 +1,9 @@
 import { useEffect } from "preact/hooks";
 import { useSignal } from "@preact/signals";
 
-import { Catalog } from "../lib/manifest.ts";
+import { Catalog } from "$lib/manifest.ts";
 
-import { Card } from "../components/Card.tsx";
+import { Card } from "$components/Card.tsx";
 
 interface CatalogProps {
   src: string;

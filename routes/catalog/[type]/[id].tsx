@@ -2,12 +2,12 @@ import { Head } from "$fresh/runtime.ts";
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import { computed, signal } from "@preact/signals";
 
-import Manifest from "../../../lib/manifest.ts";
+import Manifest from "$lib/manifest.ts";
 
-import Navigator from "../../../islands/Navigator.tsx";
-import Catalog from "../../../islands/Catalog.tsx";
+import Navigator from "$islands/Navigator.tsx";
+import Catalog from "$islands/Catalog.tsx";
 
-export const handler: Handlers<Catalog> = {
+export const handler: Handlers = {
   async GET(request: Request, context: HandlerContext) {
     const { type, id } = context.params;
     const allCatalogs = [];
@@ -39,8 +39,8 @@ export const handler: Handlers<Catalog> = {
   },
 };
 
-export default function CatalogPage(props: PageProps<Catalog>) {
-  const { type, id } = props.data;
+export default function CatalogPage(props: PageProps) {
+  const { type, id } = props.params;
   // All catalogs from all manifests
   const catalogs = signal(props.data.catalogs);
   // The catalog for this page

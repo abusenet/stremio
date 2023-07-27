@@ -13,10 +13,12 @@ import * as $7 from "./routes/catalog/movie/movieCatalog/skip=[n].json.ts";
 import * as $8 from "./routes/catalog/series/seriesCatalog.json.ts";
 import * as $9 from "./routes/index.tsx";
 import * as $10 from "./routes/manifest.json.ts";
-import * as $11 from "./routes/stream/movie/[id].ts";
+import * as $11 from "./routes/stream/[type]/[id].tsx";
 import * as $$0 from "./islands/Catalog.tsx";
 import * as $$1 from "./islands/Catalogs.tsx";
-import * as $$2 from "./islands/Navigator.tsx";
+import * as $$2 from "./islands/Meta.tsx";
+import * as $$3 from "./islands/Navigator.tsx";
+import * as $$4 from "./islands/Streams.tsx";
 
 const manifest = {
   routes: {
@@ -31,12 +33,14 @@ const manifest = {
     "./routes/catalog/series/seriesCatalog.json.ts": $8,
     "./routes/index.tsx": $9,
     "./routes/manifest.json.ts": $10,
-    "./routes/stream/movie/[id].ts": $11,
+    "./routes/stream/[type]/[id].tsx": $11,
   },
   islands: {
     "./islands/Catalog.tsx": $$0,
     "./islands/Catalogs.tsx": $$1,
-    "./islands/Navigator.tsx": $$2,
+    "./islands/Meta.tsx": $$2,
+    "./islands/Navigator.tsx": $$3,
+    "./islands/Streams.tsx": $$4,
   },
   baseUrl: import.meta.url,
 };
