@@ -31,7 +31,7 @@ export default function (props: CatalogsProps) {
   return (
     <>
       {catalogs.value.map(({ id, name, src, type }) => (
-        <section class="my-16 mx-8">
+        <section class="m-6">
           <h2 class="flex items-baseline text-3xl text-[#8fafffe6] mb-4">
             {name}&nbsp;-&nbsp;<span class="capitalize">{type}</span>
 

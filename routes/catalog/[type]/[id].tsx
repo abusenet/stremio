@@ -1,14 +1,16 @@
 import { Head } from "$fresh/runtime.ts";
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
+import { computed, signal } from "@preact/signals";
 
 import Manifest from "../../../lib/manifest.ts";
 
+import Navigator from "../../../islands/Navigator.tsx";
 import Catalog from "../../../islands/Catalog.tsx";
 
 export const handler: Handlers<Catalog> = {
   async GET(request: Request, context: HandlerContext) {
     const { type, id } = context.params;
-    let catalog;
+    const allCatalogs = [];
 
     const manifests = [
       "/manifest.json",
@@ -16,39 +18,50 @@ export const handler: Handlers<Catalog> = {
     ];
 
     for await (const manifest of manifests) {
-      const { catalogs } = await Manifest.fetch(manifest);
+      const { href } = new URL(manifest, request.url);
+      const { catalogs, types } = await Manifest.fetch(manifest);
 
-      catalog = catalogs.find((catalog) => {
-        return catalog.type === type && catalog.id === id;
-      });
+      catalogs.forEach((catalog) => {
+        allCatalogs.push(catalog);
 
-      if (catalog) {
-        const { href } = new URL(manifest, request.url);
         catalog.src = href.replace(
           "/manifest.json",
           `/catalog/${type}/${id}.json`,
         );
-        break;
-      }
+      });
     }
 
-    return context.render(catalog);
+    return context.render({
+      catalogs: allCatalogs,
+      type,
+      id,
+    });
   },
 };
 
 export default function CatalogPage(props: PageProps<Catalog>) {
-  const { name, type, id, src } = props.data;
+  const { type, id } = props.data;
+  // All catalogs from all manifests
+  const catalogs = signal(props.data.catalogs);
+  // The catalog for this page
+  const catalog = computed(() => {
+    return catalogs.value.find((c) => c.type === type && c.id === id);
+  });
+  // Page title
+  const title = computed(() => {
+    const { name, type } = catalog.value;
+    return `${name} - ${type[0].toUpperCase()}${type.substring(1)}`;
+  });
 
   return (
-    <section class="my-16 mx-8">
+    <section class="m-6">
       <Head>
-        <title>
-          {name} - {type[0].toUpperCase()}
-          {type.substring(1)}
-        </title>
+        <title>{title}</title>
       </Head>
 
-      <Catalog src={src} />
+      <Navigator catalogs={catalogs} type={type} id={id} />
+
+      <Catalog src={catalog.value.src} />
     </section>
   );
 }

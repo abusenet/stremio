@@ -16,6 +16,7 @@ import * as $10 from "./routes/manifest.json.ts";
 import * as $11 from "./routes/stream/movie/[id].ts";
 import * as $$0 from "./islands/Catalog.tsx";
 import * as $$1 from "./islands/Catalogs.tsx";
+import * as $$2 from "./islands/Navigator.tsx";
 
 const manifest = {
   routes: {
@@ -35,6 +36,7 @@ const manifest = {
   islands: {
     "./islands/Catalog.tsx": $$0,
     "./islands/Catalogs.tsx": $$1,
+    "./islands/Navigator.tsx": $$2,
   },
   baseUrl: import.meta.url,
 };
