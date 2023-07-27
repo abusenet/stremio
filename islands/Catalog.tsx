@@ -1,7 +1,7 @@
 import { useEffect } from "preact/hooks";
 import { useSignal } from "@preact/signals";
 
-import { Catalog } from "../lib/Manifest.ts";
+import { Catalog } from "../lib/manifest.ts";
 
 import { Card } from "../components/Card.tsx";
 

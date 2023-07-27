@@ -1,5 +1,6 @@
 import { useEffect } from "preact/hooks";
 import { useSignal } from "@preact/signals";
+
 import Catalog from "./Catalog.tsx";
 
 interface CatalogsProps {
