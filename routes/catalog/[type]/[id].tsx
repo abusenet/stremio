@@ -1,6 +1,8 @@
 import { Head } from "$fresh/runtime.ts";
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 
+import Manifest from "../../../lib/manifest.ts";
+
 import Catalog from "../../../islands/Catalog.tsx";
 
 export const handler: Handlers<Catalog> = {
@@ -9,20 +11,23 @@ export const handler: Handlers<Catalog> = {
     let catalog;
 
     const manifests = [
-      new URL("/manifest.json", request.url),
+      "/manifest.json",
       "https://v3-cinemeta.strem.io/manifest.json",
     ];
 
     for await (const manifest of manifests) {
-      const response = await fetch(manifest);
-      const { catalogs } = await response.json();
+      const { catalogs } = await Manifest.fetch(manifest);
 
       catalog = catalogs.find((catalog) => {
         return catalog.type === type && catalog.id === id;
       });
 
       if (catalog) {
-        catalog.url = new URL(`/catalog/${type}/${id}.json`, response.url);
+        const { href } = new URL(manifest, request.url);
+        catalog.src = href.replace(
+          "/manifest.json",
+          `/catalog/${type}/${id}.json`,
+        );
         break;
       }
     }
@@ -32,18 +37,18 @@ export const handler: Handlers<Catalog> = {
 };
 
 export default function CatalogPage(props: PageProps<Catalog>) {
-  const catalog = props.data;
+  const { name, type, id, src } = props.data;
 
   return (
-    <>
+    <section class="my-16 mx-8">
       <Head>
         <title>
-          {catalog.name} - {catalog.type[0].toUpperCase()}
-          {catalog.type.substring(1)}
+          {name} - {type[0].toUpperCase()}
+          {type.substring(1)}
         </title>
       </Head>
 
-      <Catalog {...catalog} metas={[]} />
-    </>
+      <Catalog src={src} />
+    </section>
   );
 }
