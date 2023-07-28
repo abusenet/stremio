@@ -3,7 +3,11 @@
 Your new StremIO addon is ready to go. You can start adding your own resources
 to make it great.
 
-### Usage
+## Demo
+
+https://strem.deno.dev
+
+## Usage
 
 Make sure to install Deno: https://deno.land/manual/getting_started/installation
 
@@ -15,7 +19,7 @@ deno task start
 
 This will watch the project directory and restart as necessary.
 
-### Resources
+## Resources
 
 This template provides two catalogs: movies and series under `routes/catalog`.
 Use these as a starting point to add your own catalogs.
