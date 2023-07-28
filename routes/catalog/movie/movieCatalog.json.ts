@@ -13,7 +13,7 @@ export const handler: Handlers = {
       const url = new URL(id, import.meta.url);
       const catalog = await fetch(url).then((r) => r.json());
       result.metas = catalog.metas;
-    } catch {
+    } catch (error) {
       console.error(error);
       // When the add-on is unable to provide metas for a particular search,
       // return an empty metas array to avoid error shown to the user.
