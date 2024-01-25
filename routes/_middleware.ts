@@ -1,11 +1,11 @@
-import { MiddlewareHandlerContext } from "$fresh/server.ts";
+import { FreshContext } from "$fresh/server.ts";
 
 /**
  * CORS
  */
 export async function handler(
   request: Request,
-  context: MiddlewareHandlerContext,
+  context: FreshContext,
 ) {
   const origin = request.headers.get("Origin") || "*";
   const allowMethods = "HEAD, GET, POST";

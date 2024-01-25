@@ -1,11 +1,11 @@
 import { Head } from "$fresh/runtime.ts";
-import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
+import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 
 import Meta from "$islands/Meta.tsx";
 import Streams from "$islands/Streams.tsx";
 
 export const handler: Handlers = {
-  async GET(request: Request, context: HandlerContext) {
+  async GET(request: Request, context: FreshContext) {
     const { type, id } = context.params;
     if (id.endsWith(".json")) {
       const result = { streams: [] };

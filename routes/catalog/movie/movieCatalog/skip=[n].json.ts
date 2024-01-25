@@ -1,11 +1,8 @@
-import { HandlerContext, Handlers } from "$fresh/server.ts";
+import { FreshContext, Handlers } from "$fresh/server.ts";
 
 export const handler: Handlers = {
-  async GET(request: Request, { params }: HandlerContext) {
+  async GET(request: Request, { params }: FreshContext) {
     const skip = Number(params.n);
-    console.log({
-      skip,
-    });
     const { pathname } = new URL(request.url);
     const [, _resource, _type, id, _extra] = pathname.split("/", 5);
 

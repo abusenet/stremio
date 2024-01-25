@@ -4,7 +4,7 @@
 
 import { Handlers } from "$fresh/server.ts";
 
-import Manifest from "../lib/manifest.ts";
+import Manifest from "$lib/manifest.ts";
 
 export const handler: Handlers = {
   async GET(request: Request, _context) {

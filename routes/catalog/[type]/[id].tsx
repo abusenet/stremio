@@ -1,5 +1,5 @@
 import { Head } from "$fresh/runtime.ts";
-import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
+import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import { computed, signal } from "@preact/signals";
 
 import Manifest from "$lib/manifest.ts";
@@ -8,7 +8,7 @@ import Navigator from "$islands/Navigator.tsx";
 import Catalog from "$islands/Catalog.tsx";
 
 export const handler: Handlers = {
-  async GET(request: Request, context: HandlerContext) {
+  async GET(request: Request, context: FreshContext) {
     const { type, id } = context.params;
     const allCatalogs = [];
 
