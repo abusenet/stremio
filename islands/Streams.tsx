@@ -1,5 +1,7 @@
 import { useEffect } from "preact/hooks";
-import { Signal, useComputed, useSignal } from "@preact/signals";
+import { useComputed, useSignal } from "@preact/signals";
+
+import { MetaProps } from "./Meta.tsx";
 
 export default function (props: MetaProps) {
   const { type, id } = props;
@@ -8,10 +10,11 @@ export default function (props: MetaProps) {
     return streams.value.length;
   });
 
-  useEffect(async () => {
-    const response = await fetch(`/stream/${type}/${id}.json`);
-    const result = await response.json();
-    streams.value = result.streams;
+  useEffect(() => {
+    fetch(`/stream/${type}/${id}.json`).then(async (response) => {
+      const result = await response.json();
+      streams.value = result.streams;
+    });
 
     return () => {
       // Optional: Any cleanup code

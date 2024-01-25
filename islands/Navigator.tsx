@@ -1,4 +1,4 @@
-import { computed, Signal, signal } from "@preact/signals";
+import { computed, Signal } from "@preact/signals";
 
 import { Catalog } from "$lib/manifest.ts";
 
@@ -12,7 +12,7 @@ export default function (props: NavigatorProps) {
   const { catalogs, id, type } = props;
 
   const types = computed(() => {
-    const set = new Set();
+    const set = new Set<string>();
     catalogs.value.forEach(({ type }) => set.add(type));
     return [...set];
   });

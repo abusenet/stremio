@@ -1,28 +1,29 @@
 import { useEffect } from "preact/hooks";
 import { useSignal } from "@preact/signals";
 
-import { Catalog } from "$lib/manifest.ts";
+import { Catalog, Meta } from "$lib/manifest.ts";
 
 import { Card } from "$components/Card.tsx";
 
 interface CatalogProps {
-  src: string;
+  href: string;
   limit?: number;
 }
 
 export default function (props: CatalogProps) {
-  const url = new URL(props.src);
+  const url = new URL(props.href);
   const [, _resource, type, id, extra] = url.pathname.split("/");
-  const metas = useSignal([]);
+  const metas = useSignal([] as Meta[]);
 
-  useEffect(async () => {
-    const catalog: Catalog = await fetch(url).then((r) => r.json());
-    metas.value = catalog.metas.slice(0, props.limit);
+  useEffect(() => {
+    fetch(url).then((r) => r.json()).then((catalog: Catalog) => {
+      metas.value = catalog.metas.slice(0, props.limit);
+    });
 
     return () => {
       // Optional: Any cleanup code
     };
-  }, [props.src]);
+  }, [props.href]);
 
   return (
     <ul class={`-mx-4 flex flex-wrap`}>

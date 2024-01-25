@@ -1,26 +1,28 @@
 import { useEffect } from "preact/hooks";
 import { useSignal } from "@preact/signals";
 
-import Catalog from "./Catalog.tsx";
+import type Manifest from "$lib/manifest.ts";
+import { Catalog } from "$lib/manifest.ts";
+import CatalogIsland from "./Catalog.tsx";
 
 interface CatalogsProps {
   manifest: string;
+  limit?: number;
 }
 
 export default function (props: CatalogsProps) {
-  const catalogs = useSignal([]);
+  const catalogs = useSignal([] as Catalog[]);
   const limit = props.limit || 10;
 
-  useEffect(async () => {
-    const response = await fetch(props.manifest);
-    const manifest = await response.json();
-    catalogs.value = manifest.catalogs.map(({ id, type, name }) => {
-      return {
-        id,
-        name,
-        src: new URL(`/catalog/${type}/${id}.json`, response.url),
-        type,
-      };
+  useEffect(() => {
+    fetch(props.manifest).then(async (response) => {
+      const manifest: Manifest = await response.json();
+      catalogs.value = manifest.catalogs.map((catalog) => {
+        const { id, type } = catalog;
+        catalog.href =
+          new URL(`/catalog/${type}/${id}.json`, response.url).href;
+        return catalog;
+      });
     });
 
     return () => {
@@ -30,7 +32,7 @@ export default function (props: CatalogsProps) {
 
   return (
     <>
-      {catalogs.value.map(({ id, name, src, type }) => (
+      {catalogs.value.map(({ id, name, href = "", type }) => (
         <section class="m-6 basis-full">
           <h2 class="flex items-baseline text-3xl text-[#8fafffe6] mb-4">
             {name}&nbsp;-&nbsp;<span class="capitalize">{type}</span>
@@ -47,7 +49,7 @@ export default function (props: CatalogsProps) {
             </a>
           </h2>
 
-          <Catalog src={src} limit={10} />
+          <CatalogIsland href={href} limit={10} />
         </section>
       ))}
     </>

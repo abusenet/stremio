@@ -1,6 +1,6 @@
 interface CardProps {
   title: string;
-  image: string;
+  image?: string;
   url: string;
 }
 

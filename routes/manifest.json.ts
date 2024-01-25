@@ -16,6 +16,12 @@ export const handler: Handlers = {
       name: "Fresh Add-on",
       description: "My Fresh Stremio add-on",
       logo: `${origin}/logo.svg`,
+      behaviorHints: {
+        adult: true,
+        p2p: true,
+        configurable: false,
+        configurationRequired: false,
+      },
     });
 
     return new Response(JSON.stringify(manifest, null, 2), {

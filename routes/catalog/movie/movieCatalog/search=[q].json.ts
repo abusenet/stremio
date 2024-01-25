@@ -1,16 +1,18 @@
 import { FreshContext, Handlers } from "$fresh/server.ts";
 
+import { Catalog, Meta } from "$lib/manifest.ts";
+
 export const handler: Handlers = {
   async GET(request: Request, { params }: FreshContext) {
     const query = params.q.toLowerCase();
     const { pathname } = new URL(request.url);
     const [, _resource, _type, id, _extra] = pathname.split("/", 5);
 
-    const result = { metas: [] };
+    const result = { metas: [] as Meta[] };
 
     try {
       const url = new URL(`../${id}.json`, import.meta.url);
-      const catalog = await fetch(url).then((r) => r.json());
+      const catalog: Catalog = await fetch(url).then((r) => r.json());
       result.metas = catalog.metas.filter(({ name }) => {
         return name.toLowerCase().includes(query);
       });

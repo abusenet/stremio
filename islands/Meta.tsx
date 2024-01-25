@@ -1,21 +1,23 @@
 import { useEffect } from "preact/hooks";
-import { Signal, useSignal } from "@preact/signals";
+import { useSignal } from "@preact/signals";
 
-interface MetaProps {
+import { Meta } from "$lib/manifest.ts";
+
+export interface MetaProps {
   type: string;
   id: string;
 }
 
 export default function (props: MetaProps) {
   const { type, id } = props;
-  const meta = useSignal({});
+  const meta = useSignal({} as Meta);
 
-  useEffect(async () => {
-    const response = await fetch(
-      `https://v3-cinemeta.strem.io/meta/${type}/${id}.json`,
-    );
-    const result = await response.json();
-    meta.value = result.meta;
+  useEffect(() => {
+    const url = `https://v3-cinemeta.strem.io/meta/${type}/${id}.json`;
+    fetch(url).then(async (response) => {
+      const result = await response.json();
+      meta.value = result.meta;
+    });
 
     return () => {
       // Optional: Any cleanup code
@@ -46,7 +48,7 @@ export default function (props: MetaProps) {
 
           <p class="mt-4 flex items-center gap-8 text-2xl">
             <span>{meta.value.runtime}</span>
-            <span>{meta.value.year}</span>
+            <span>{meta.value.releaseInfo}</span>
           </p>
         </div>
 
@@ -61,7 +63,7 @@ export default function (props: MetaProps) {
               Genres
             </span>
 
-            {meta.value.genre?.map((genre) => (
+            {meta.value.genres?.map((genre) => (
               <a
                 href={`/catalog/${type}/top/?genre=${genre}`}
                 class="
