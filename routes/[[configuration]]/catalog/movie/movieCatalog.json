@@ -20,6 +20,27 @@
       "name": "Big Buck Bunny",
       "poster": "https://images.metahub.space/poster/medium/tt1254207/img",
       "genres": ["Animation", "Short", "Comedy"]
+    },
+    {
+      "type": "movie",
+      "id": "tt0807840",
+      "name": "Elephants Dream",
+      "poster": "https://images.metahub.space/poster/medium/tt0807840/img",
+      "genres": ["Animation", "Short", "Sci-Fi"]
+    },
+    {
+      "type": "movie",
+      "id": "tt1727587",
+      "name": "Sintel",
+      "poster": "https://images.metahub.space/poster/medium/tt1727587/img",
+      "genres": ["Animation", "Short", "Fantasy"]
+    },
+    {
+      "type": "movie",
+      "id": "tt2285752",
+      "name": "Tears of Steel",
+      "poster": "https://images.metahub.space/poster/medium/tt2285752/img",
+      "genres": ["Short", "Sci-Fi"]
     }
   ]
 }

@@ -2,18 +2,18 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
+import * as $_configuration_catalog_type_id_ from "./routes/[[configuration]]/catalog/[type]/[id].tsx";
+import * as $_configuration_catalog_movie_movieCatalog_json from "./routes/[[configuration]]/catalog/movie/movieCatalog.json.ts";
+import * as $_configuration_catalog_movie_movieCatalog_genre_q_json from "./routes/[[configuration]]/catalog/movie/movieCatalog/genre=[q].json.ts";
+import * as $_configuration_catalog_movie_movieCatalog_search_q_json from "./routes/[[configuration]]/catalog/movie/movieCatalog/search=[q].json.ts";
+import * as $_configuration_catalog_movie_movieCatalog_skip_n_json from "./routes/[[configuration]]/catalog/movie/movieCatalog/skip=[n].json.ts";
+import * as $_configuration_catalog_series_seriesCatalog_json from "./routes/[[configuration]]/catalog/series/seriesCatalog.json.ts";
+import * as $_configuration_manifest_json from "./routes/[[configuration]]/manifest.json.ts";
+import * as $_configuration_stream_type_id_ from "./routes/[[configuration]]/stream/[type]/[id].tsx";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
-import * as $catalog_type_id_ from "./routes/catalog/[type]/[id].tsx";
-import * as $catalog_movie_movieCatalog_json from "./routes/catalog/movie/movieCatalog.json.ts";
-import * as $catalog_movie_movieCatalog_genre_q_json from "./routes/catalog/movie/movieCatalog/genre=[q].json.ts";
-import * as $catalog_movie_movieCatalog_search_q_json from "./routes/catalog/movie/movieCatalog/search=[q].json.ts";
-import * as $catalog_movie_movieCatalog_skip_n_json from "./routes/catalog/movie/movieCatalog/skip=[n].json.ts";
-import * as $catalog_series_seriesCatalog_json from "./routes/catalog/series/seriesCatalog.json.ts";
 import * as $index from "./routes/index.tsx";
-import * as $manifest_json from "./routes/manifest.json.ts";
-import * as $stream_type_id_ from "./routes/stream/[type]/[id].tsx";
 import * as $Catalog from "./islands/Catalog.tsx";
 import * as $Catalogs from "./islands/Catalogs.tsx";
 import * as $Meta from "./islands/Meta.tsx";
@@ -23,23 +23,26 @@ import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
+    "./routes/[[configuration]]/catalog/[type]/[id].tsx":
+      $_configuration_catalog_type_id_,
+    "./routes/[[configuration]]/catalog/movie/movieCatalog.json.ts":
+      $_configuration_catalog_movie_movieCatalog_json,
+    "./routes/[[configuration]]/catalog/movie/movieCatalog/genre=[q].json.ts":
+      $_configuration_catalog_movie_movieCatalog_genre_q_json,
+    "./routes/[[configuration]]/catalog/movie/movieCatalog/search=[q].json.ts":
+      $_configuration_catalog_movie_movieCatalog_search_q_json,
+    "./routes/[[configuration]]/catalog/movie/movieCatalog/skip=[n].json.ts":
+      $_configuration_catalog_movie_movieCatalog_skip_n_json,
+    "./routes/[[configuration]]/catalog/series/seriesCatalog.json.ts":
+      $_configuration_catalog_series_seriesCatalog_json,
+    "./routes/[[configuration]]/manifest.json.ts":
+      $_configuration_manifest_json,
+    "./routes/[[configuration]]/stream/[type]/[id].tsx":
+      $_configuration_stream_type_id_,
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/_middleware.ts": $_middleware,
-    "./routes/catalog/[type]/[id].tsx": $catalog_type_id_,
-    "./routes/catalog/movie/movieCatalog.json.ts":
-      $catalog_movie_movieCatalog_json,
-    "./routes/catalog/movie/movieCatalog/genre=[q].json.ts":
-      $catalog_movie_movieCatalog_genre_q_json,
-    "./routes/catalog/movie/movieCatalog/search=[q].json.ts":
-      $catalog_movie_movieCatalog_search_q_json,
-    "./routes/catalog/movie/movieCatalog/skip=[n].json.ts":
-      $catalog_movie_movieCatalog_skip_n_json,
-    "./routes/catalog/series/seriesCatalog.json.ts":
-      $catalog_series_seriesCatalog_json,
     "./routes/index.tsx": $index,
-    "./routes/manifest.json.ts": $manifest_json,
-    "./routes/stream/[type]/[id].tsx": $stream_type_id_,
   },
   islands: {
     "./islands/Catalog.tsx": $Catalog,

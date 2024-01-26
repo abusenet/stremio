@@ -4,17 +4,28 @@ import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import Meta from "$islands/Meta.tsx";
 import Streams from "$islands/Streams.tsx";
 
+const keys = [
+  "6Jw5MyQx",
+  "T2TEPAbj",
+  "KG9Cx2R2",
+  "n2v9ZZms",
+  "jhw3wEAY",
+]
+
 export const handler: Handlers = {
   async GET(request: Request, context: FreshContext) {
-    const { type, id } = context.params;
+    const { configuration, type, id } = context.params;
+
     if (id.endsWith(".json")) {
       const result = { streams: [] };
       try {
-        const url = new URL(`../${type}/${id}`, import.meta.url);
+        // Uses the optional configuration as a subfolder name.
+        // Change to custom logic to filter streams based on the configuration.
+        const pathname = ["..", type, configuration, id].filter(Boolean).join("/");
+        const url = new URL(pathname, import.meta.url);
         const movie = await fetch(url).then((r) => r.json());
         result.streams = movie.streams;
       } catch (error) {
-        console.error(error);
         // When the add-on is unable to provide streams for a particular video,
         // return an empty streams array to avoid error shown to the user.
       }

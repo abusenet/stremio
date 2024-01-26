@@ -1,0 +1,9 @@
+{
+  "streams": [
+    {
+      "name": "Tears of Steel",
+      "description": "Private Link",
+      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+    }
+  ]
+}

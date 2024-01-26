@@ -1,0 +1,9 @@
+{
+  "streams": [
+    {
+      "name": "Elephants Dream",
+      "description": "Private Link",
+      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+    }
+  ]
+}

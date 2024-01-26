@@ -19,7 +19,8 @@ export const handler: Handlers = {
       behaviorHints: {
         adult: true,
         p2p: true,
-        configurable: false,
+        configurable: true,
+        // Configuration can be optional, but if it's required, set this to true
         configurationRequired: false,
       },
     });

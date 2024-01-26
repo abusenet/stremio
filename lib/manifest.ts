@@ -400,9 +400,22 @@ export interface Stream {
    * e.g. link to Netflix
    */
   externalUrl?: string | MetaLink | URL;
+  /**
+   * Name of the stream; usually used for stream quality
+   */
   name?: string;
+  /**
+   * Description of the stream
+   * (warning: this will soon be deprecated in favor of stream.description)
+   */
   title?: string;
+  /**
+   * Description of the stream (previously `stream.title`)
+   */
   description?: string;
+  /**
+   * Subtitles for this stream
+   */
   subtitles?: Subtitle[];
   behaviorHints?: {
     /**
@@ -491,7 +504,10 @@ class Manifest implements Manifest {
 
     // Populates the manifest.
     Object.keys(routes).forEach((route) => {
-      const [, , resource, type, filename, extra] = route.split("/");
+      const [, , _configuration, resource, type, filename, extra] = route.split("/");
+
+      // TODO: Adjust resources based on `configuration`.
+
       if (includes(Resources, resource)) {
         if (!includes(resources, resource)) {
           resources.push(resource);
