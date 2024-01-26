@@ -10,7 +10,7 @@ const keys = [
   "KG9Cx2R2",
   "n2v9ZZms",
   "jhw3wEAY",
-]
+];
 
 export const handler: Handlers = {
   async GET(request: Request, context: FreshContext) {
@@ -21,7 +21,9 @@ export const handler: Handlers = {
       try {
         // Uses the optional configuration as a subfolder name.
         // Change to custom logic to filter streams based on the configuration.
-        const pathname = ["..", type, configuration, id].filter(Boolean).join("/");
+        const pathname = ["..", type, configuration, id].filter(Boolean).join(
+          "/",
+        );
         const url = new URL(pathname, import.meta.url);
         const movie = await fetch(url).then((r) => r.json());
         result.streams = movie.streams;

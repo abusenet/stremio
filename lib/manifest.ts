@@ -504,7 +504,9 @@ class Manifest implements Manifest {
 
     // Populates the manifest.
     Object.keys(routes).forEach((route) => {
-      const [, , _configuration, resource, type, filename, extra] = route.split("/");
+      const [, , _configuration, resource, type, filename, extra] = route.split(
+        "/",
+      );
 
       // TODO: Adjust resources based on `configuration`.
 

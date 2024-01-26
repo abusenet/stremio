@@ -13,9 +13,11 @@ import * as $_configuration_stream_type_id_ from "./routes/[[configuration]]/str
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
+import * as $configure_index from "./routes/configure/index.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $Catalog from "./islands/Catalog.tsx";
 import * as $Catalogs from "./islands/Catalogs.tsx";
+import * as $Configurator from "./islands/Configurator.tsx";
 import * as $Meta from "./islands/Meta.tsx";
 import * as $Navigator from "./islands/Navigator.tsx";
 import * as $Streams from "./islands/Streams.tsx";
@@ -42,11 +44,13 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/_middleware.ts": $_middleware,
+    "./routes/configure/index.tsx": $configure_index,
     "./routes/index.tsx": $index,
   },
   islands: {
     "./islands/Catalog.tsx": $Catalog,
     "./islands/Catalogs.tsx": $Catalogs,
+    "./islands/Configurator.tsx": $Configurator,
     "./islands/Meta.tsx": $Meta,
     "./islands/Navigator.tsx": $Navigator,
     "./islands/Streams.tsx": $Streams,
