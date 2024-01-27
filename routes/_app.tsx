@@ -33,7 +33,7 @@ export default function App({ Component, state }: PageProps) {
                 type="search"
                 name="q"
                 placeholder="Search..."
-                size={50}
+                size={25}
                 class="py-2 pl-6 pr-2 bg-transparent rounded-full"
               />
               <span class="sr-only">Search Terms</span>
@@ -49,7 +49,7 @@ export default function App({ Component, state }: PageProps) {
           <Nav user={user}></Nav>
         </header>
 
-        <main class="relative flex flex-wrap overflow-auto h-[calc(100vh-56px)]">
+        <main class="relative">
           <Component />
         </main>
 

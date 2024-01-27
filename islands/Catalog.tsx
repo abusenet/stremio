@@ -26,9 +26,22 @@ export default function (props: CatalogProps) {
   }, [props.href]);
 
   return (
-    <ul class={`-mx-4 flex flex-wrap`}>
+    <ul
+      class="
+        -mx-4
+        grid grid-flow-col
+        overflow-x-auto snap-x snap-proximity no-scrollbar
+
+        auto-cols-[33.33%]
+        sm:auto-cols-[25%]
+        md:auto-cols-[20%]
+        lg:auto-cols-[16.66%]
+        xl:auto-cols-[12.5%]
+        2xl:auto-cols-[10%]
+      "
+    >
       {metas.value.map(({ id, name, poster }) => (
-        <li class="basis-[10%] p-4 transition hover:bg-[#484572]">
+        <li class="p-4 transition group">
           <Card
             title={name}
             image={poster}
