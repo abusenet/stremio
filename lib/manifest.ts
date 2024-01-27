@@ -486,6 +486,35 @@ export interface Subtitle {
   lang: string;
 }
 
+export interface Config {
+  /**
+   * A key that will identify the user chosen value
+   */
+  name: string;
+  /**
+   * Can be "text", "number", "password", "checkbox" or "select"
+   */
+  type: string;
+  /**
+   * The default value, for type: "boolean" this can be set to "checked" to
+   * default to enabled
+   */
+  default?: string;
+  /**
+   * The title of the setting
+   */
+  title?: string;
+  /**
+   * The list of (string) choices for type: "select"
+   */
+  options?: string[];
+  /**
+   * If the value is required or not, only applies to the following types:
+   * "string", "number" (default is `false`)
+   */
+  required?: boolean;
+}
+
 class Manifest implements Manifest {
   static async fetch(
     url: string,

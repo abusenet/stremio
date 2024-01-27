@@ -13,12 +13,17 @@ import * as $_configuration_stream_type_id_ from "./routes/[[configuration]]/str
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
+import * as $account_index from "./routes/account/index.tsx";
+import * as $account_login from "./routes/account/login.tsx";
+import * as $account_logout from "./routes/account/logout.tsx";
+import * as $account_register from "./routes/account/register.tsx";
 import * as $configure_index from "./routes/configure/index.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $Catalog from "./islands/Catalog.tsx";
 import * as $Catalogs from "./islands/Catalogs.tsx";
 import * as $Configurator from "./islands/Configurator.tsx";
 import * as $Meta from "./islands/Meta.tsx";
+import * as $Nav from "./islands/Nav.tsx";
 import * as $Navigator from "./islands/Navigator.tsx";
 import * as $Streams from "./islands/Streams.tsx";
 import { type Manifest } from "$fresh/server.ts";
@@ -44,6 +49,10 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/_middleware.ts": $_middleware,
+    "./routes/account/index.tsx": $account_index,
+    "./routes/account/login.tsx": $account_login,
+    "./routes/account/logout.tsx": $account_logout,
+    "./routes/account/register.tsx": $account_register,
     "./routes/configure/index.tsx": $configure_index,
     "./routes/index.tsx": $index,
   },
@@ -52,6 +61,7 @@ const manifest = {
     "./islands/Catalogs.tsx": $Catalogs,
     "./islands/Configurator.tsx": $Configurator,
     "./islands/Meta.tsx": $Meta,
+    "./islands/Nav.tsx": $Nav,
     "./islands/Navigator.tsx": $Navigator,
     "./islands/Streams.tsx": $Streams,
   },
