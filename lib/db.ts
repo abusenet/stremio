@@ -1,4 +1,4 @@
-import { compare, digest, validate } from "$x/htpasswd/main.ts";
+import { compare, digest } from "$x/htpasswd@v0.2.0/main.ts";
 
 export interface User {
   username: string;
@@ -26,11 +26,6 @@ interface Session {
 
 const db = await Deno.openKv(Deno.env.get("DATABASE_URL"));
 
-// const { value: admin } = await db.get<User>(["users", "esente"]);
-// console.log(admin);
-// admin.password = "$2a$10$CRlMram4vO7lw9arlGNQ.OUFhzS/YpOfJ5wdXpneYQDAU4HI2KMiO";
-// await db.set(["users", "esente"], admin);
-
 export async function register(username: string, password: string, code = ""): Promise<{ ok: boolean }> {
   const invalid = new Response("Invalid code", {
     status: 401,
@@ -39,7 +34,9 @@ export async function register(username: string, password: string, code = ""): P
 
   const user: User = {
     username,
-    password: await digest(password, "BCRYPT"),
+    password: await digest(password, {
+      algorithm: "BCRYPT",
+    }),
     apikey: crypto.randomUUID(),
   }
 

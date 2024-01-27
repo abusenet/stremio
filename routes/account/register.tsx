@@ -31,7 +31,12 @@ export const handler: Handlers = {
     // existing accounts.
     return new Response(`<p>
     Submitted. If the account was created successfully, you can now <a href="/account/login">login</a>.
-    </p>`);
+    </p>`, {
+      headers: {
+        "Content-Type": "text/html; charset=utf-8",
+        "Location": "/account/login",
+      },
+    });
   }
 };
 
